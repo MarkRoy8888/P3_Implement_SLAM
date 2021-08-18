@@ -94,7 +94,7 @@ class robot:
         for i in range(self.num_landmarks):
             dx = self.landmarks[i][0] - self.x + self.rand() * self.measurement_noise
             dy = self.landmarks[i][1] - self.y + self.rand() * self.measurement_noise    
-            if ((dx <= self.measurement_range) and (dy <= self.measurement_range)):
+            if ((abs(dx) <= self.measurement_range) and (abs(dy) <= self.measurement_range)):
                 measurements.append([i, dx, dy])
 
         ## TODO: return the final, complete list of measurements
@@ -112,6 +112,7 @@ class robot:
                                    round(random.random() * self.world_size)])
         self.num_landmarks = num_landmarks
 
+    
 
     # called when print(robot) is called; prints the robot's location
     def __repr__(self):
